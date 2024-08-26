@@ -1,0 +1,56 @@
+[
+    {
+        "_id": "1",
+        "title": "Message from FriendlyNeighbor",
+        "content": "Can you help me with some gardening tips?",
+        "received": "3 days ago"
+    },
+    {
+        "_id": "2",
+        "title": "Message from Colleague",
+        "content": "Let's schedule a meeting to discuss the project.",
+        "received": "5 days ago"
+    },
+    {
+        "_id": "3",
+        "title": "Message from OldFriend",
+        "content": "It's been a while! How's life treating you?",
+        "received": "1 week ago"
+    },
+    {
+        "_id": "4",
+        "title": "Message from NewFollower",
+        "content": "I love your content! Keep it up.",
+        "received": "10 days ago"
+    },
+    {
+        "_id": "5",
+        "title": "Message from TechGuru",
+        "content": "Do you have any tips for improving website speed?",
+        "received": "2 weeks ago"
+    },
+    {
+        "_id": "6",
+        "title": "Message from TravelEnthusiast",
+        "content": "Any recommendations for a weekend getaway?",
+        "received": "3 weeks ago"
+    },
+    {
+        "_id": "7",
+        "title": "Message from LocalArtist",
+        "content": "I saw your art exhibition last week; it was fantastic!",
+        "received": "1 month ago"
+    },
+    {
+        "_id": "8",
+        "title": "Message from BookLover",
+        "content": "Have you read any good books recently?",
+        "received": "1 month ago"
+    },
+    {
+        "_id": "9",
+        "title": "Message from FitnessFan",
+        "content": "Could you share your workout routine?",
+        "received": "1 month ago"
+    }
+]
