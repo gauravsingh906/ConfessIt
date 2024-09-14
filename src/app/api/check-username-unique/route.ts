@@ -11,8 +11,9 @@ export async function GET(request: Request) {
 
     //localhost:3000/api/cuu?username=gaurav?product=phone
     await dbConnect();
+    const { searchParams } = new URL(request.url);
     try {
-        const { searchParams } = new URL(request.url);
+
         const queryParams = {
             username: searchParams.get('username')
         }

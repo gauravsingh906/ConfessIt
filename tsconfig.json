@@ -32,7 +32,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "emails/VerificationEmail.jsx"
+    "emails/VerificationEmail.jsx",
+    "src/components/ui/carousel.tsx"
   ],
   "exclude": [
     "node_modules"

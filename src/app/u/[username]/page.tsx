@@ -8,7 +8,6 @@ import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { CardHeader, CardContent, Card } from '@/components/ui/card';
-import { useCompletion } from 'ai/react';
 import {
     Form,
     FormControl,
@@ -38,14 +37,10 @@ export default function SendMessage() {
     const params = useParams<{ username: string }>();
     const username = params.username;
 
-
     const [isLoading, setIsLoading] = useState(false);
-
-    // Use useCompletion to fetch message suggestions
-    const { complete, completion, isLoading: isSuggestLoading, error: suggestError } = useCompletion({
-        api: '/api/suggest-messages',
-        initialCompletion: initialMessageString,
-    });
+    const [suggestedMessages, setSuggestedMessages] = useState<string[]>(parseStringMessages(initialMessageString));
+    const [isSuggestLoading, setIsSuggestLoading] = useState(false);
+    const [suggestError, setSuggestError] = useState<string | null>(null);
 
     const form = useForm<z.infer<typeof messageSchema>>({
         resolver: zodResolver(messageSchema),
@@ -74,8 +69,7 @@ export default function SendMessage() {
             const axiosError = error as AxiosError<ApiResponse>;
             toast({
                 title: 'Failed',
-                description:
-                    axiosError.response?.data.message ?? 'Failed to send message',
+                description: axiosError.response?.data.message ?? 'Failed to send message',
                 variant: 'destructive',
             });
         } finally {
@@ -84,22 +78,25 @@ export default function SendMessage() {
     };
 
     const fetchSuggestedMessages = async () => {
-        setIsLoading(true);
-        try {
-            await complete(''); // Trigger the completion
+        setIsSuggestLoading(true);
+        setSuggestedMessages([]);
+        setSuggestError(null);
 
+        try {
+            const response = await axios.post('/api/suggest-messages');
+            const messageString = response.data.message; // Assuming the response is directly a string
+            setSuggestedMessages(parseStringMessages(messageString));
         } catch (error) {
             console.error('Error fetching messages:', error);
+            setSuggestError('Failed to fetch suggested messages.');
         } finally {
-            setIsLoading(false);
+            setIsSuggestLoading(false);
         }
     };
 
     return (
         <div className="container mx-auto my-8 p-8 bg-gray-300 rounded-lg shadow-lg max-w-4xl">
-            <h1 className="text-4xl font-bold mb-6 text-center text-gray-800">
-                Public Profile Link
-            </h1>
+            <h1 className="text-4xl font-bold mb-6 text-center text-gray-800">Public Profile Link</h1>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <FormField
@@ -157,18 +154,22 @@ export default function SendMessage() {
                     </CardHeader>
                     <CardContent className="flex flex-col space-y-4 p-4">
                         {suggestError ? (
-                            <p className="text-red-500 font-medium">{suggestError.message}</p>
+                            <p className="text-red-500 font-medium">{suggestError}</p>
                         ) : (
-                            parseStringMessages(completion).map((message, index) => (
-                                <Button
-                                    key={index}
-                                    variant="outline"
-                                    className="border border-gray-300 text-gray-800 hover:bg-gray-100"
-                                    onClick={() => handleMessageClick(message)}
-                                >
-                                    {message}
-                                </Button>
-                            ))
+                            suggestedMessages.length > 0 ? (
+                                suggestedMessages.map((message, index) => (
+                                    <Button
+                                        key={index}
+                                        variant="outline"
+                                        className="border border-gray-300 text-gray-800 hover:bg-gray-100"
+                                        onClick={() => handleMessageClick(message)}
+                                    >
+                                        {message}
+                                    </Button>
+                                ))
+                            ) : (
+                                <p className="text-gray-600">No suggestions available.</p>
+                            )
                         )}
                     </CardContent>
                 </Card>

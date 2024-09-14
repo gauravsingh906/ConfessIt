@@ -32,12 +32,19 @@ function Navbar() {
                 Logout
               </Button>
             </>
-          ) : (
+          ) : (<>
+            <Link href="/u/gaurav" passHref>
+              <Button className="bg-slate-100 text-black hover:bg-gray-200" variant="outline">
+                Secret Dispatch
+              </Button>
+            </Link>
             <Link href="/sign-in" passHref>
               <Button className="bg-slate-100 text-black hover:bg-gray-200" variant="outline">
                 Login
               </Button>
             </Link>
+          </>
+
           )}
         </div>
       </div>

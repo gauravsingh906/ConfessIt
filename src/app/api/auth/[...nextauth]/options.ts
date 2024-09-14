@@ -17,6 +17,7 @@ export const authOptions: NextAuthOptions = {
             },
             async authorize(credentials: any): Promise<any> {
                 await dbConnect()
+                console.log(credentials, "credentials")
                 try {
                     const user = await UserModel.findOne({
                         $or: [
@@ -30,7 +31,7 @@ export const authOptions: NextAuthOptions = {
                     }
 
                     if (!user.isVerified) {
-                        throw new Error("Please verify your accout before login")
+                        throw new Error("Please verify your account before login")
                     }
                     const isPasswordCorrect = await bcryptjs.compare(credentials.password, user.password);
                     if (isPasswordCorrect) {
@@ -52,7 +53,7 @@ export const authOptions: NextAuthOptions = {
             if (user) {
                 token._id = user._id?.toString();
                 token._isVerified = user.isVerified;
-                token.isAcceptingMessages = user.isAcceptingMessages;
+                token.isAcceptingMessages = user.isAcceptingMessage;
                 token.username = user.username
 
             }

@@ -1,4 +1,3 @@
-// /app/api/suggest-messages/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
@@ -11,12 +10,11 @@ export async function POST(req: NextRequest) {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         const result = await model.generateContent(prompt);
 
-        // Assuming result.response is directly accessible and is a text string or JSON
-        const response = await result.response; // Adjust this if it's not a direct text or JSON response
+        const responseText = await result.response.text(); // Ensure response is text
 
         return NextResponse.json({
             success: true,
-            message: response.text(),
+            message: responseText
         });
     } catch (error) {
         console.error('An unexpected error occurred:', error);
