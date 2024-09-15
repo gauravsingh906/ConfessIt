@@ -36,7 +36,7 @@ export async function GET(request: Request) {
         if (!user || user.length === 0) {
             return Response.json({
                 success: false,
-                message: "User not found"
+                message: "No message available"
             }, {
                 status: 401
             })

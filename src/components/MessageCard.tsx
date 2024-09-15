@@ -36,7 +36,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
         `/api/delete-message/${message._id}`
       );
       toast({
-        title: response.data.message,
+        title: response.data.messages as any,
         variant: 'default',
       });
       onMessageDelete(message._id as string);
