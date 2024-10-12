@@ -56,7 +56,7 @@ export default function Home() {
   return (
     <>
 
-      <main className="flex-grow flex flex-col items-center justify-center px-2 md:px-8  pt-[7.5rem]  text-white pb-5">
+      <main className="flex-grow flex flex-col items-center justify-center px-2 md:px-8  pt-[6rem]  text-white pb-5">
         {/* Alternating Section */}
         <section className="text-center mb-8 md:mb-12 animate-fade-in">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight transition-all duration-1000 ease-in-out">
