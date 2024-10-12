@@ -17,9 +17,9 @@ interface RootLayoutProps {
 
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" >
+    <html lang="en" className='bg-animated-gradient'>
       <AuthProvider>
-        <body className={inter.className} >
+        <body className={inter.className}  >
           {children}
           <Toaster />
         </body>

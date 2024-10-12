@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useToast } from '@/components/ui/use-toast';
 import { verifySchema } from '@/schemas/verifySchema';
@@ -58,7 +58,7 @@ export default function VerifyAccount() {
                     <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
                         Verify Your Account
                     </h1>
-                    <p className="mb-4">Enter the verification code sent to your email</p>
+                    <p className="mb-4">Please enter the verification code sent to your email.</p>
                 </div>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

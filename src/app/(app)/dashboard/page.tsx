@@ -45,9 +45,7 @@ function UserDashboard() {
             const axiosError = error as AxiosError<ApiResponse>;
             toast({
                 title: 'Error',
-                description:
-                    axiosError.response?.data.message ??
-                    'Failed to fetch message settings',
+                description: axiosError.response?.data.message ?? 'Failed to fetch message settings',
                 variant: 'destructive',
             });
         } finally {
@@ -64,16 +62,15 @@ function UserDashboard() {
                 setMessages(response.data.messages || []);
                 if (refresh) {
                     toast({
-                        title: 'Refreshed Messages',
-                        description: 'Showing latest messages',
+                        title: 'Messages Updated',
+                        description: 'Displaying the latest messages.',
                     });
                 }
             } catch (error) {
                 const axiosError = error as AxiosError<ApiResponse>;
                 toast({
                     title: 'Error',
-                    description:
-                        axiosError.response?.data.message ?? 'Failed to fetch messages',
+                    description: axiosError.response?.data.message ?? 'Failed to fetch messages',
                     variant: 'destructive',
                 });
             } finally {
@@ -105,9 +102,7 @@ function UserDashboard() {
             const axiosError = error as AxiosError<ApiResponse>;
             toast({
                 title: 'Error',
-                description:
-                    axiosError.response?.data.message ??
-                    'Failed to update message settings',
+                description: axiosError.response?.data.message ?? 'Failed to update message settings',
                 variant: 'destructive',
             });
         }
@@ -126,16 +121,16 @@ function UserDashboard() {
         navigator.clipboard.writeText(profileUrl);
         toast({
             title: 'URL Copied!',
-            description: 'Profile URL has been copied to clipboard.',
+            description: 'Your unique profile link has been copied.',
         });
     };
 
     return (
-        <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-gray-300 rounded-lg shadow-md w-full max-w-6xl">
-            <h1 className="text-4xl font-bold mb-6 text-gray-800">User Dashboard</h1>
+        <div className="my-8 mt-[5.5rem] mx-1 md:mx-8 lg:mx-auto p-6  rounded-lg shadow-lg w-full max-w-6xl transition-transform transform hover:scale-105 duration-300">
+            <h1 className="text-4xl font-bold mb-6 text-gray-800">Welcome to Your Dashboard</h1>
 
             <div className="mb-6">
-                <h2 className="text-xl font-semibold mb-2 text-gray-700">Copy Your Unique Link</h2>
+                <h2 className="text-xl font-semibold mb-2 text-gray-700">Share Your Unique Profile Link</h2>
                 <div className="flex items-center space-x-2">
                     <input
                         type="text"
@@ -143,8 +138,8 @@ function UserDashboard() {
                         disabled
                         className="border border-gray-300 rounded-md p-3 w-full bg-gray-100 text-gray-700 cursor-not-allowed"
                     />
-                    <Button onClick={copyToClipboard} className="bg-blue-500 text-white hover:bg-blue-600">
-                        Copy
+                    <Button onClick={copyToClipboard} className="bg-blue-500 text-white hover:bg-blue-600 transition duration-300">
+                        Copy Link
                     </Button>
                 </div>
             </div>
@@ -157,13 +152,13 @@ function UserDashboard() {
                     disabled={isSwitchLoading}
                 />
                 <span className="ml-3 text-gray-700">
-                    Accept Messages: {acceptMessages ? 'On' : 'Off'}
+                    Message Acceptance: {acceptMessages ? 'Enabled' : 'Disabled'}
                 </span>
             </div>
             <Separator className="my-6" />
 
             <Button
-                className="mb-6"
+                className="mb-6 flex items-center space-x-2"
                 variant="outline"
                 onClick={(e) => {
                     e.preventDefault();
@@ -175,7 +170,7 @@ function UserDashboard() {
                 ) : (
                     <RefreshCcw className="h-5 w-5" />
                 )}
-                <span className="ml-2">Refresh Messages</span>
+                <span className="ml-2">Refresh Your Messages</span>
             </Button>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {messages.length > 0 ? (
@@ -187,7 +182,7 @@ function UserDashboard() {
                         />
                     ))
                 ) : (
-                    <p className="text-gray-500">No messages to display.</p>
+                    <p className="text-gray-500">No messages found.</p>
                 )}
             </div>
         </div>

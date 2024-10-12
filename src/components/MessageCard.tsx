@@ -52,16 +52,14 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
   };
 
   return (
-    <Card className="border border-gray-300 rounded-lg shadow-md bg-gray-100 ">
+    <Card className="border border-blue-600 mt-0 rounded-lg shadow-lg bg-grey-300 text-white transition-transform hover:scale-105">
       <CardHeader>
-        <div className="flex justify-between items-center  mb-2">
-          <CardTitle className="text-xl font-semibold text-gray-900">
-            {message.content}
-          </CardTitle>
+        <div className="flex justify-between items-center">
+          <CardTitle className="text-xl font-semibold">{message.content}</CardTitle>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button variant='destructive' className="bg-red-600 hover:bg-red-400">
-                <X color="black" className="w-5 h-5 " />
+              <Button variant="destructive" className="bg-red-600 hover:bg-red-400">
+                <X color="white" className="w-5 h-5" />
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
@@ -69,13 +67,13 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
                 <AlertDialogTitle className="text-lg font-semibold text-gray-900">
                   Are you sure you want to delete this message?
                 </AlertDialogTitle>
-                <AlertDialogDescription className="text-sm text-gray-700">
+                <AlertDialogDescription className="text-sm text-gray-300">
                   This action cannot be undone. This will permanently delete this message.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel asChild>
-                  <Button variant="outline" className="text-gray-700 hover:bg-gray-200">
+                  <Button variant="outline" className="text-gray-300 hover:bg-gray-700">
                     Cancel
                   </Button>
                 </AlertDialogCancel>
@@ -86,12 +84,12 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
             </AlertDialogContent>
           </AlertDialog>
         </div>
-        <div className="text-sm text-gray-500">
+        <div className="text-sm text-black">
           {dayjs(message.createdAt).format('MMM D, YYYY h:mm A')}
         </div>
       </CardHeader>
       <CardContent className="p-4">
-        {/* Add content if needed */}
+        {/* Add any additional message content here */}
       </CardContent>
     </Card>
   );
