@@ -12,12 +12,12 @@ function Navbar() {
   const user: User = session?.user as User;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 p-3 md:p-6 bg-transparent text-white transition duration-300 ease-in-out z-50">
+    <nav className="fixed top-0 left-0 right-0 mt-5 p-3 md:p-6 bg-transparent text-white transition duration-300 ease-in-out z-50">
       <div className="container mx-auto flex justify-between items-center w-full max-w-5xl px-4">
 
         {/* Increased size for the logo */}
         <Link href="/" passHref>
-          <span className="text-3xl md:text-4xl font-extrabold text-black hover:text-gray-800 transition-transform transform hover:scale-110 duration-300 ease-in-out bg-gradient-to-r from-black via-gray-800 to-black bg-clip-text text-transparent">
+          <span className="text-4xl underline md:text-4xl font-extrabold text-black hover:text-gray-800 transition-transform transform hover:scale-110 duration-300 ease-in-out bg-gradient-to-r from-black via-gray-800 to-black bg-clip-text text-transparent">
             ConfessIt
           </span>
         </Link>

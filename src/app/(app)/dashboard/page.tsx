@@ -126,8 +126,8 @@ function UserDashboard() {
     };
 
     return (
-        <div className="my-8 mt-[5.5rem] mx-1 md:mx-8 lg:mx-auto p-6  rounded-lg shadow-lg w-full max-w-6xl transition-transform transform hover:scale-105 duration-300">
-            <h1 className="text-4xl font-bold mb-6 text-gray-800">Welcome to Your Dashboard</h1>
+        <div className="my-8 mt-[6.5rem] mx-1  md:mx-8 lg:mx-auto p-6  rounded-lg shadow-lg w-full max-w-6xl transition-transform transform hover:scale-105 duration-300">
+            <h1 className="text-2xl font-bold mb-6 text-gray-800">Welcome to Your Dashboard</h1>
 
             <div className="mb-6">
                 <h2 className="text-xl font-semibold mb-2 text-gray-700">Share Your Unique Profile Link</h2>
