@@ -117,7 +117,7 @@ export default function Home() {
 
 
       </main>
-      <footer className="fixed bottom-0 left-0 right-0 pb-4 ml-[-28px] flex justify-center content-center  bg-transparent text-black  flex justify-center md:bg-opacity-80">
+      <footer className="fixed bottom-0 left-0 right-0 pb-4 ml-[-28px] flex justify-center content-center  text-black  flex justify-center md:bg-opacity-80">
 
         <span className="text-center text-sm  md:text-base">
           © 2024 ConfessIt. All rights reserved.
