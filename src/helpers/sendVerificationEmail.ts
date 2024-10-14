@@ -32,7 +32,7 @@ export async function sendVerificationEmail(email: string, username: string, ver
         const mailOptions = {
             from: process.env.SMTP_USERNAME, // Use environment variable for sender email
             to: email, // Recipient email
-            subject: 'Anonymous-review | Verification Code', // Email subject
+            subject: 'ConfessIt | Verification Code', // Email subject
             html: createEmailHtml(username, verifyCode) // Directly created HTML content
         };
 
