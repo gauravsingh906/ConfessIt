@@ -54,7 +54,7 @@ export default function VerificationEmail({ username, otp }: VerificationEmailPr
                 </Row>
                 <Row>
                     <Button
-                        href={`http://localhost:3000/verify/${username}`}
+                        href={`${process.env.DOMAIN}/verify/${username}`}
                         style={{ backgroundColor: '#61dafb', color: 'indigo', padding: '10px 20px', textDecoration: 'none', borderRadius: '5px' }}
                     >
                         Verify here
